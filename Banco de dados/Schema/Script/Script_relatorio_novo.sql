@@ -1,29 +1,29 @@
-	begin transaction;
-	
-	/*==============================================================*/
-	/* dbms name:      postgresql 9.4                               */
-	/* created on:     01/12/2015 		                            */
-	/* author:     	   Larissa Menandro	                            */
-	/*==============================================================*/
+begin transaction;
 
-	begin transaction;
-	set statement_timeout = 0;
-	set client_encoding = 'utf8';
-	set standard_conforming_strings = on;
-	set check_function_bodies = false;
-	set client_min_messages = warning;
+/*==============================================================*/
+/* dbms name:      postgresql 9.4                               */
+/* created on:     01/12/2015 		                            */
+/* author:     	   Larissa Menandro	                            */
+/*==============================================================*/
+
+begin transaction;
+set statement_timeout = 0;
+set client_encoding = 'utf8';
+set standard_conforming_strings = on;
+set check_function_bodies = false;
+set client_min_messages = warning;
 
 
-	-- -----------------------------------------------------------------------
-	-- --------------- s c h e m a   R E L A T Ó R I O  ------------------
-	-- -----------------------------------------------------------------------
-	--
-	-- criação do schema
-	create schema relatorio;
-	alter schema relatorio owner to postgres;
-	set search_path = relatorio, pg_catalog;
-	set default_tablespace = '';
-	set default_with_oids = false;
+-- -----------------------------------------------------------------------
+-- --------------- s c h e m a   R E L A T Ó R I O  ------------------
+-- -----------------------------------------------------------------------
+--
+-- criação do schema
+create schema relatorio;
+alter schema relatorio owner to postgres;
+set search_path = relatorio, pg_catalog;
+set default_tablespace = '';
+set default_with_oids = false;
 
 
 
@@ -38,7 +38,7 @@ create table BIOPSIA
    NUMERO_BLOCOS_       int4                           null,
    DATA                 date                           null,
    OBSERVACAO           text		                   null,
-   constraint PK_BIOPSIA primary key clustered (ID_BIOPSIA)
+   constraint PK_BIOPSIA primary key  (ID_BIOPSIA)
 );
 
 comment on column BIOPSIA.ID_BIOPSIA is 
@@ -58,7 +58,7 @@ create table BIOPSIA_HAS_MATERIAL
    ID_BIOPSIA_HAS_MATERIAL serial                         not null,
    ID_BIOPSIA           int8                           null,
    ID_MATERIAL          int8                           null,
-   constraint PK_BIOPSIA_HAS_MATERIAL primary key clustered (ID_BIOPSIA_HAS_MATERIAL)
+   constraint PK_BIOPSIA_HAS_MATERIAL primary key  (ID_BIOPSIA_HAS_MATERIAL)
 );
 
 comment on column BIOPSIA_HAS_MATERIAL.ID_BIOPSIA_HAS_MATERIAL is 
@@ -79,7 +79,7 @@ create table MATERIAL
    ID_PACIENTE          int8                           null,
    ID_TIPO_MATERIAL     int8                           null,
    DESCRICAO            varchar(200)                   null,
-   constraint PK_MATERIAL primary key clustered (ID_MATERIAL)
+   constraint PK_MATERIAL primary key  (ID_MATERIAL)
 );
 
 comment on column MATERIAL.ID_MATERIAL is 
@@ -104,7 +104,7 @@ create table PACIENTE
    SEXO                 char(1)                        null,
    REGISTRO             varchar(45)                    null,
    IDADE                int2                           null,
-   constraint PK_PACIENTE primary key clustered (ID_PACIENTE)
+   constraint PK_PACIENTE primary key  (ID_PACIENTE)
 );
 
 comment on column PACIENTE.ID_PACIENTE is 
@@ -117,7 +117,7 @@ create table TB_TIPO_MATERIAL
 (
    ID_TIPO_MATERIAL     serial                         not null,
    TIPO_MATERIAL        int2                           null,
-   constraint PK_TB_TIPO_MATERIAL primary key clustered (ID_TIPO_MATERIAL)
+   constraint PK_TB_TIPO_MATERIAL primary key  (ID_TIPO_MATERIAL)
 );
 
 comment on table TB_TIPO_MATERIAL is 
